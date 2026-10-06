@@ -7,9 +7,6 @@ Repositorio personal para documentar mi aprendizaje de Java.
 ### Java
 - [ ] Fundamentos
 - [ ] POO
-- [ ] Collections
-- [ ] Generics
-- [ ] Streams
 
 ### Backend
 - [ ] SQL
