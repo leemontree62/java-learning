@@ -1,7 +1,5 @@
 # Java Learning
 
-Repositorio personal para documentar mi aprendizaje de Java.
-
 ## Contenido
 
 ### Java
