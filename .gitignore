@@ -1,1 +1,16 @@
+# Compilados
 **/bin/
+**/out/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Kotlin
+.kotlin/
+
+# Sistema operativo
+.DS_Store
