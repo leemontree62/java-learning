@@ -14,3 +14,9 @@
 
 # Sistema operativo
 .DS_Store
+
+# Maven
+target/
+
+# Configuración con credenciales
+**/persistence.xml
