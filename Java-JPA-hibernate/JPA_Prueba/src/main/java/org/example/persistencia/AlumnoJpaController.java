@@ -2,7 +2,7 @@ package org.example.persistencia;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+
 import org.example.logica.Alumno;
 
 import java.util.List;
@@ -21,8 +21,8 @@ public class AlumnoJpaController {
         EntityManager em = emf.createEntityManager();       // abre tu "conexión de trabajo"
         try {
             em.getTransaction().begin();                    // empieza la transacción
-            em.persist(alumno);                             // LÍNEA C: guarda el alumno nuevo
-            em.getTransaction().commit();                   // confirma: aquí se escribe en la base
+            em.persist(alumno);                             // guarda el alumno nuevo
+            em.getTransaction().commit();                   // aquí se escribe en la base
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();             // si algo falla, deshace tod o
@@ -38,7 +38,7 @@ public class AlumnoJpaController {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.merge(alumno);                               // LÍNEA C: actualiza uno que ya existe (mismo id)
+            em.merge(alumno);                               // actualiza uno que ya existe (mismo id)
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
@@ -71,7 +71,6 @@ public class AlumnoJpaController {
     }
 
     // ---------- BUSCAR UNO ----------
-    // Las lecturas no modifican nada, así que no necesitan transacción.
     public Alumno buscar(int id) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -85,7 +84,6 @@ public class AlumnoJpaController {
     public List<Alumno> listar() {
         EntityManager em = emf.createEntityManager();
         try {
-            // "Alumno" aquí es el nombre de la CLASE Java, no el de la tabla
             return em.createQuery("SELECT a FROM Alumno a", Alumno.class).getResultList();
         } finally {
             em.close();
@@ -106,4 +104,5 @@ public class AlumnoJpaController {
     public void cerrar() {
         emf.close();
     }
+
 }

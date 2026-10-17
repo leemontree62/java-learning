@@ -19,8 +19,8 @@ public class MateriaJpaController {
         EntityManager em = emf.createEntityManager();       // abre tu "conexión de trabajo"
         try {
             em.getTransaction().begin();                    // empieza la transacción
-            em.persist(materia);                             // LÍNEA C: guarda el alumno nuevo
-            em.getTransaction().commit();                   // confirma: aquí se escribe en la base
+            em.persist(materia);                             //guarda el alumno nuevo
+            em.getTransaction().commit();                   // aquí se escribe en la base
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();             // si algo falla, deshace tod o
@@ -36,7 +36,7 @@ public class MateriaJpaController {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.merge(materia);                               // LÍNEA C: actualiza uno que ya existe (mismo id)
+            em.merge(materia);                               //actualiza uno que ya existe (mismo id)
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
@@ -55,7 +55,7 @@ public class MateriaJpaController {
             em.getTransaction().begin();
             Materia materia = em.find(Materia.class, id);      // primero se busca...
             if (materia != null) {
-                em.remove(materia);                          // LÍNEA C: ...y luego se borra
+                em.remove(materia);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -69,7 +69,6 @@ public class MateriaJpaController {
     }
 
     // ---------- BUSCAR UNO ----------
-    // Las lecturas no modifican nada, así que no necesitan transacción.
     public Materia buscar(int id) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -83,7 +82,6 @@ public class MateriaJpaController {
     public List<Materia> listar() {
         EntityManager em = emf.createEntityManager();
         try {
-            // "Alumno" aquí es el nombre de la CLASE Java, no el de la tabla
             return em.createQuery("SELECT a FROM Materia a", Materia.class).getResultList();
         } finally {
             em.close();
@@ -104,4 +102,5 @@ public class MateriaJpaController {
     public void cerrar() {
         emf.close();
     }
+
 }

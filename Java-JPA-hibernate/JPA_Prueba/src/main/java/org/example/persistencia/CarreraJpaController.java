@@ -16,11 +16,11 @@ public class CarreraJpaController {
 
     // ---------- CREAR ----------
     public void crear(Carrera carrera) {
-        EntityManager em = emf.createEntityManager();       // abre tu "conexión de trabajo"
+        EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();                    // empieza la transacción
-            em.persist(carrera);                             // LÍNEA C: guarda el alumno nuevo
-            em.getTransaction().commit();                   // confirma: aquí se escribe en la base
+            em.persist(carrera);                             // guarda el alumno nuevo
+            em.getTransaction().commit();                   //  aquí se escribe en la base
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();             // si algo falla, deshace tod o
@@ -36,7 +36,7 @@ public class CarreraJpaController {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.merge(carrera);                               // LÍNEA C: actualiza uno que ya existe (mismo id)
+            em.merge(carrera);                               // actualiza uno que ya existe (mismo id)
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
@@ -55,7 +55,7 @@ public class CarreraJpaController {
             em.getTransaction().begin();
             Carrera carrera = em.find(Carrera.class, id);      // primero se busca...
             if (carrera != null) {
-                em.remove(carrera);                          // LÍNEA C: ...y luego se borra
+                em.remove(carrera);                          //  ...y luego se borra
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -69,7 +69,6 @@ public class CarreraJpaController {
     }
 
     // ---------- BUSCAR UNO ----------
-    // Las lecturas no modifican nada, así que no necesitan transacción.
     public Carrera buscar(int id) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -83,7 +82,6 @@ public class CarreraJpaController {
     public List<Carrera> listar() {
         EntityManager em = emf.createEntityManager();
         try {
-            // "Alumno" aquí es el nombre de la CLASE Java, no el de la tabla
             return em.createQuery("SELECT a FROM Carrera a", Carrera.class).getResultList();
         } finally {
             em.close();
@@ -104,4 +102,6 @@ public class CarreraJpaController {
     public void cerrar() {
         emf.close();
     }
+
+
 }

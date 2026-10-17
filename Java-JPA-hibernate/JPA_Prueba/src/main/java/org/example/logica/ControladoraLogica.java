@@ -75,4 +75,5 @@ public class ControladoraLogica {
     public void cerrar() {
         controlPersis.cerrar();
     }
+
 }

@@ -9,8 +9,7 @@ import java.util.List;
 
 public class ControladoraPersistencia {
 
-    // Lee el persistence.xml, prepara la conexión a la base de datos y
-    // el mapa clase-tabla. Es pesado, por eso se crea UNA sola vez.
+    // Lee el persistence.xml, prepara la conexión a la base de datos
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUnidad");
 
     // Cada controller usa esta misma fábrica para abrir sus gestores.
@@ -84,5 +83,6 @@ public class ControladoraPersistencia {
     public void cerrar(){
         emf.close();
     }
+
 
 }

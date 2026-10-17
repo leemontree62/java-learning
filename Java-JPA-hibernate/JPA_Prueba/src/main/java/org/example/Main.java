@@ -12,6 +12,7 @@ import java.util.List;
 
 public class Main {
     static void main() {
+        IO.println("Requiere Java 25 para que funcione");
         ControladoraLogica control = new ControladoraLogica();
         // 1) materias
         Materia materia1 = new Materia("Programacion", "Cuatrimestral");
@@ -48,5 +49,6 @@ public class Main {
         }
 
         control.cerrar();
+        
     }
 }

@@ -2,7 +2,6 @@ package org.example.logica;
 
 import jakarta.persistence.*;
 
-import java.util.LinkedList;
 
 @Entity
 public class Materia {
@@ -57,4 +56,5 @@ public class Materia {
                 ", tipo='" + tipo + '\'' +
                 '}';
     }
+
 }
